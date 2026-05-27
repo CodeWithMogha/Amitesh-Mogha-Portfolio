@@ -6,11 +6,12 @@ import recruiterImage from '../images/recruiter.png';
 import developerImage from '../images/developer.png';
 import stalkerImage from '../images/stalker.png';
 import adventurerImage from '../images/adventurer.png';
-// Profile background videos — hosted on Cloudinary CDN
-const recruiterVideo = 'https://res.cloudinary.com/dqj9t5vu5/video/upload/v1777803157/recruiter_jexnua.mp4';
-const developerVideo = 'https://res.cloudinary.com/dqj9t5vu5/video/upload/v1777803184/developer_s31zem.mp4';
-const stalkerVideo = 'https://res.cloudinary.com/dqj9t5vu5/video/upload/v1777801694/stalker_ozyisq.mp4';
-const adventurerVideo = 'https://res.cloudinary.com/dqj9t5vu5/video/upload/v1777803176/adventurer_gwaayy.mp4';
+// Profile background videos — self-hosted from public/videos/
+const basePath = process.env.PUBLIC_URL || '';
+const recruiterVideo = `${basePath}/videos/recruiter.mp4`;
+const developerVideo = `${basePath}/videos/developer.mp4`;
+const stalkerVideo = `${basePath}/videos/stalker.mp4`;
+const adventurerVideo = `${basePath}/videos/adventurer.mp4`;
 
 const Browse: React.FC = () => {
   const navigate = useNavigate();
