@@ -31,13 +31,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        env:
+          REACT_APP_HYGRAPH_ENDPOINT: 'https://ap-south-1.cdn.hygraph.com/content/cmjonuks306oi07v2th8qz3j9/master'
+          REACT_APP_HYGRAPH_TOKEN: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImdjbXMtbWFpbi1wcm9kdWN0aW9uIn0.eyJ2ZXJzaW9uIjozLCJpYXQiOjE3NjY5NDY5NzksImF1ZCI6WyJodHRwczovL2FwaS1hcC1zb3V0aC0xLmh5Z3JhcGguY29tL3YyL2Ntam9udWtzMzA2b2kwN3YydGg4cXozajkvbWFzdGVyIiwibWFuYWdlbWVudC1uZXh0LmdyYXBoY21zLmNvbSJdLCJpc3MiOiJodHRwczovL21hbmFnZW1lbnQtYXAtc291dGgtMS5oeWdyYXBoLmNvbS8iLCJzdWIiOiIyMTU3MDU3NC1lNTIyLTRlZGEtOTY3Zi1kYzQyYmU2M2Q3OGYiLCJqdGkiOiJjbWpxMmx5cjEyY3ZxMDhwYjJjdno0MGI0In0.pXE_mjpXPpzFNik6N5HufFrmYqaXP5juEBo1Sbb0Y1NUTlTUtwmWeQ72u0FxVjRR336pn-h1td5QeVUVrbmGzcJOtE9fP72K5FcdDZR4N0UVxfHG2HLL-daYMHHdg6c4sOnfGKUS6cz5nNE1SFqwCOu0fYrKDFZcqapUAVvDreTjno_qxA5vFqNmB49jr-2JYYBuHj7H0BBe9rpX06zBrPSYOCQnqF-YVOz1vX1v7FkDE9Sn2Wbrv-I-vRD1b8kDNFvCFq0kk1OpoKVklgIxV7SYLpYjP5Vh0romw3G5hiyC7OqzEuLMwZq7y75unUxaL0xE1wm0DVdSe1mgCQGKFkZBhNSfCcS08NBzJF3gbipN4QAif38STbOCAVNSQm8JsTOYZGE_FLc5YW5qRHkE-O7Le1D30HDUwB93t0xQOH0Xk-tUOI3OxPmxqnx75sUv9YsCl3Z6Y_6pMXXgaFflWTomu8v12Uz6hzQUw8eMdfCk8Zhk8BFOIEEhAebTO9OYuh09or1cXrV4H7fnXvFSdrFbN20eNq24r82TxqYWJ7ZHGfD-zihmTn3A7nH3UkZbMxjB1vOx5MMcvlZWk7lGbyyT-sb2b9HDw-Cunfs-88fEF_Vv1Z0JtX7P6gXD-qLvD9E3yMRGCutAqsGP8a_DhgHUA7q9qOAbmnQPQWpDZlY'
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload build directory instead of entire repository
+          path: 'build'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
