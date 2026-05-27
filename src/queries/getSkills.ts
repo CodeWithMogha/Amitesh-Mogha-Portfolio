@@ -1,7 +1,4 @@
-import { request } from 'graphql-request';
-
-const endpoint = process.env.REACT_APP_HYGRAPH_ENDPOINT!;
-const token = process.env.REACT_APP_HYGRAPH_TOKEN!;
+import hygraphClient from './hygraphClient';
 
 export async function getSkills() {
   const QUERY = `
@@ -16,14 +13,11 @@ export async function getSkills() {
     }
   `;
 
-  const data: any = await request(
-    endpoint,
-    QUERY,
-    {},
-    {
-      Authorization: `Bearer ${token}`,
-    }
-  );
-
-  return data.skills ?? [];
+  try {
+    const data: any = await hygraphClient.request(QUERY);
+    return data.skills ?? [];
+  } catch (error) {
+    console.error("[Hygraph] getSkills failed:", error);
+    return [];
+  }
 }

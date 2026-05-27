@@ -1,7 +1,4 @@
-import { request } from 'graphql-request';
-
-const endpoint = process.env.REACT_APP_HYGRAPH_ENDPOINT!;
-const token = process.env.REACT_APP_HYGRAPH_TOKEN!;
+import hygraphClient from './hygraphClient';
 
 export async function getProfileBanner() {
   const query = `
@@ -15,12 +12,11 @@ export async function getProfileBanner() {
     }
   `
 
-  const data: any = await request(
-    endpoint,
-    query,
-    {},
-    { Authorization: `Bearer ${token}` }
-  );
-
-  return data.profileBanners ? data.profileBanners[0] : null;
+  try {
+    const data: any = await hygraphClient.request(query);
+    return data.profileBanners ? data.profileBanners[0] : null;
+  } catch (error) {
+    console.error("[Hygraph] getProfileBanner failed:", error);
+    return null;
+  }
 }
