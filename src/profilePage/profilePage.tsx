@@ -23,7 +23,11 @@ const ProfilePage: React.FC = () => {
   const { profileName } = useParams();
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+<<<<<<< HEAD
   const [isMuted, setIsMuted] = useState(false);
+=======
+  const [isMuted, setIsMuted] = useState(true);
+>>>>>>> 472cc20f3385ed7aba966ba79a248b5d52284b8b
 
   // Safe profile detection
   const profile: ProfileType =
@@ -50,6 +54,7 @@ const ProfilePage: React.FC = () => {
     const video = videoRef.current;
     if (!video) return;
 
+<<<<<<< HEAD
     // Apply current mute status to video element
     video.muted = isMuted;
 
@@ -60,8 +65,14 @@ const ProfilePage: React.FC = () => {
             console.warn("Unmuted autoplay restricted by browser, playing muted:", err);
             video.muted = true;
             setIsMuted(true);
-            video.play().catch(() => {});
+            video.play().catch(() => { });
           });
+=======
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+>>>>>>> 472cc20f3385ed7aba966ba79a248b5d52284b8b
         } else {
           video.pause();
         }
@@ -71,7 +82,11 @@ const ProfilePage: React.FC = () => {
 
     observer.observe(video);
     return () => observer.disconnect();
+<<<<<<< HEAD
   }, [backgroundVideo, isMuted]);
+=======
+  }, [backgroundVideo]);
+>>>>>>> 472cc20f3385ed7aba966ba79a248b5d52284b8b
 
   return (
     <>
