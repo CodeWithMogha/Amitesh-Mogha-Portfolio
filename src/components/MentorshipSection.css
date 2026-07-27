@@ -1,0 +1,280 @@
+/* ===== MENTORSHIP SECTION — EXACT REPLICA ===== */
+
+.ms-section {
+  position: relative;
+  width: 100%;
+  padding: 120px 0;
+  background: #0f0f0f;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Constellation SVG — subtle background on the right */
+.ms-constellation {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Cpath d='M400 100l50-30 30 50m20 80l40-10m-10 60l-30 20-20-40m-50 100l-40 20-10-50m-30-70l20-40 40 10' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3Ccircle cx='400' cy='100' r='3' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='450' cy='70' r='2' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='480' cy='120' r='4' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='500' cy='200' r='2' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='540' cy='190' r='3' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='530' cy='250' r='2' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='500' cy='270' r='3' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='480' cy='230' r='2' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='430' cy='330' r='3' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='390' cy='350' r='2' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='380' cy='300' r='4' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='350' cy='230' r='2' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='370' cy='190' r='3' fill='rgba(255,255,255,0.1)'/%3E%3Ccircle cx='410' cy='200' r='2' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+}
+
+/* Texture overlay for that "designer" grainy look */
+.ms-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ms-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+/* ── MAIN CARD ── */
+.ms-main-card {
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #1c1c1c 0%, #111111 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 4px solid #e50914;
+  border-radius: 12px;
+  padding: 80px 100px;
+  width: 65%; /* 65% width to allow 35% space for action card */
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+  position: relative;
+  min-height: 400px;
+}
+
+.ms-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #888;
+  text-transform: uppercase;
+  margin: 0 0 24px 0;
+}
+
+.ms-heading {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 30px 0;
+}
+
+.ms-accent {
+  color: #e50914;
+}
+
+.ms-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #a0a0a0;
+  margin: 0 0 20px 0;
+  /* Make text wide enough to fill the 65% card */
+  max-width: 100%;
+}
+
+.ms-inline-accent {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ── ACTION CARD — exact overlap ── */
+.ms-action-card {
+  position: absolute;
+  right: 0;
+  /* Center it vertically slightly overlapping the bottom */
+  top: 50%;
+  transform: translateY(-20%); 
+  width: 400px; /* Make it wide enough to match the image */
+  background: #181818;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 50px;
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.9);
+  box-sizing: border-box;
+  backdrop-filter: blur(15px);
+}
+
+.ms-action-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #777;
+  text-transform: uppercase;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.ms-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ms-btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+  background: #e50914;
+  color: #fff;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 40px rgba(229, 9, 20, 0.5); /* Strong red glow */
+}
+
+.ms-btn-primary:hover {
+  background: #f40612;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px rgba(229, 9, 20, 0.7);
+}
+
+.ms-btn-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.02);
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.ms-btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Feature Label with Star */
+.ms-feature-label {
+  position: absolute;
+  bottom: 30px;
+  right: 5%;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 5;
+}
+
+.ms-feature-label svg {
+  width: 20px;
+  height: 20px;
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .ms-main-card {
+    width: 100%;
+    padding: 60px 40px 250px 40px; /* Space for action card at bottom */
+  }
+  .ms-action-card {
+    top: auto;
+    bottom: -40px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 90%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ms-section {
+    padding: 60px 0;
+  }
+
+  .ms-wrapper {
+    width: 92%;
+  }
+
+  .ms-main-card {
+    padding: 30px 20px 200px 20px;
+    border-left-width: 3px;
+  }
+
+  .ms-heading {
+    font-size: clamp(1.3rem, 5vw, 2rem);
+  }
+
+  .ms-body {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .ms-action-card {
+    padding: 24px;
+    width: 92%;
+    bottom: -30px;
+  }
+
+  .ms-btn-primary,
+  .ms-btn-ghost {
+    padding: 14px;
+    font-size: 0.8rem;
+  }
+
+  .ms-feature-label {
+    bottom: 20px;
+    right: 4%;
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 420px) {
+  .ms-main-card {
+    padding: 24px 16px 180px 16px;
+  }
+
+  .ms-heading {
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
+    margin-bottom: 16px;
+  }
+
+  .ms-body {
+    font-size: 0.82rem;
+  }
+
+  .ms-action-card {
+    padding: 20px;
+  }
+
+  .ms-btn-primary,
+  .ms-btn-ghost {
+    padding: 12px;
+    font-size: 0.78rem;
+  }
+}

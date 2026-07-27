@@ -1,0 +1,264 @@
+.profile-page {
+  position: relative;
+  width: 100%;
+  height: calc(100vw * 8.5 / 16);
+  max-height: 95vh;
+  min-height: 500px;
+  overflow: hidden;
+  color: #fff;
+}
+
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .profile-page {
+    height: 100vh;
+    padding-bottom: 5rem;
+  }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.85) 5%,
+      rgba(0, 0, 0, 0.5) 52%,
+      rgba(0, 0, 0, 0.2) 75%,
+      rgba(0, 0, 0, 0) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.netflix-mute-btn {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover (desktop only) */
+.netflix-mute-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+/* Active (click feedback) */
+.netflix-mute-btn:active {
+  transform: scale(0.96);
+}
+
+/* SVG icon sizing */
+.netflix-mute-btn svg {
+  opacity: 1;
+}
+
+/* Mobile refinement */
+@media (max-width: 768px) {
+  .netflix-mute-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.netflix-rating-badge {
+  display: flex;
+  align-items: center;
+
+  height: 40px;
+  padding: 0 50px 0 15px;
+
+  margin-left: 20px;
+
+  background: rgba(20, 20, 20, 0.8);
+  color: #fff;
+
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  border-left: 3px solid #dcdcdc;
+}
+
+/* Mobile refinement */
+@media (max-width: 768px) {
+  .netflix-rating-badge {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+.netflix-controls {
+  position: absolute;
+  bottom: 15vw;
+  /* Just above Skills / View All */
+  right: 0px;
+
+  display: flex;
+  align-items: center;
+
+  background: none;
+  padding: 0;
+
+  z-index: 999;
+}
+
+
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-content-positioned {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  bottom: 0%;
+  padding-bottom: 9vw;
+  /* Comfortable gap above Skills */
+  z-index: 150;
+  width: auto;
+  pointer-events: none;
+}
+
+
+.hero-content-positioned>* {
+  pointer-events: auto;
+  /* Re-enable clicks on actual content like buttons */
+}
+
+.profile-rows-container {
+  position: relative;
+  z-index: 100;
+  margin-top: -10vw;
+  /* Skills peeks out mid-height at the bottom of the hero */
+  min-height: 200px;
+}
+
+/* ── Mobile: Tablets ── */
+@media (max-width: 1024px) {
+  .hero-content-positioned {
+    left: 40px;
+    right: 40px;
+    padding-bottom: 8vw;
+  }
+}
+
+/* ── Mobile: Phones ── */
+@media (max-width: 768px) {
+  .profile-page {
+    height: 55vh; /* Reduced to avoid excessive video zoom */
+    min-height: 400px;
+    padding-bottom: 0;
+  }
+
+  h1 {
+    font-size: clamp(1.4rem, 6vw, 2.5rem);
+  }
+
+  .hero-content-positioned {
+    left: 16px;
+    right: 16px;
+    padding-bottom: 12vw;
+  }
+
+  .netflix-controls {
+    bottom: calc(12vw + 8px); /* matches padding + banner bottom padding */
+    right: 16px;
+    height: 34px; 
+  }
+
+  .netflix-mute-btn {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    max-width: 26px !important;
+    min-height: 26px !important;
+    max-height: 26px !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .netflix-mute-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .netflix-rating-badge {
+    font-size: 0.6rem;
+    padding: 0 8px;
+    margin-left: 8px;
+    height: 24px;
+  }
+
+  .profile-rows-container {
+    margin-top: -5vw;
+  }
+}
+
+/* ── Very small phones ── */
+@media (max-width: 420px) {
+  .profile-page {
+    height: 45vh; /* Reduced further */
+    min-height: 320px;
+  }
+
+  .hero-content-positioned {
+    left: 12px;
+    right: 12px;
+    padding-bottom: 16vw;
+  }
+
+  .netflix-controls {
+    bottom: calc(16vw + 8px);
+    right: 12px;
+    height: 32px;
+  }
+
+  .netflix-mute-btn {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    min-height: 24px !important;
+    max-height: 24px !important;
+  }
+
+  .netflix-mute-btn svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .netflix-rating-badge {
+    font-size: 0.55rem;
+    padding: 0 6px;
+    margin-left: 6px;
+    height: 22px;
+  }
+}

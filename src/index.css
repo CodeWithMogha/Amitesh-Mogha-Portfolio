@@ -1,0 +1,43 @@
+/* ===== GLOBAL RESET & RESPONSIVE BASE ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: 'Netflix Sans',Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #141414;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Ensure images/videos never overflow */
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tap highlight removal for mobile */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Minimum touch target size */
+button, a, [role="button"] {
+  min-height: 44px;
+}

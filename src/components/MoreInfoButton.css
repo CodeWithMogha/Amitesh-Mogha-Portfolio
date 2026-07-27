@@ -1,0 +1,51 @@
+.more-info-button {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 24px;
+  background-color: rgba(109, 109, 110, 0.7);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.more-info-button .label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.more-info-button:hover {
+  background-color: rgba(109, 109, 110, 0.5);
+}
+
+.more-info-button .icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.more-info-button .spacer {
+  width: 0.6rem;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .more-info-button {
+    height: 34px;
+    padding: 0 14px;
+  }
+  .more-info-button .label {
+    font-size: 0.8rem;
+  }
+  .more-info-button .icon-container svg {
+    width: 18px;
+    height: 18px;
+  }
+  .more-info-button .spacer {
+    width: 0.4rem;
+  }
+}

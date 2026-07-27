@@ -1,0 +1,147 @@
+/* ===== NETFLIX FOOTER BASE ===== */
+.nf-footer {
+  background: #0f0f0f;
+  border-top: 1px solid rgba(255, 255, 255, 0.6); /* Increased from 0.08 to create a visible white dividing line */
+  padding: 40px 0 20px;
+  display: flex;
+  justify-content: center;
+  color: #808080;
+}
+
+/* ===== INNER WRAPPER ===== */
+.nf-footer-inner {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 4%;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.nf-social {
+  display: flex;
+  gap: 20px;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.nf-social svg {
+  cursor: pointer;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.nf-social svg:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* ===== LINKS GRID ===== */
+.nf-links {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.nf-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nf-links li {
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.nf-links li:hover {
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* ===== SERVICE CODE ===== */
+.nf-service {
+  background: transparent;
+  border: 1px solid #555;
+  color: #808080;
+  padding: 6px 14px;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.nf-service:hover {
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* ===== COPYRIGHT ===== */
+.nf-copy {
+  font-size: 0.8rem;
+  color: #6d6d6d;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .nf-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nf-footer {
+    padding: 30px 0 20px;
+  }
+
+  .nf-footer-inner {
+    padding: 0 5%;
+  }
+
+  .nf-social {
+    justify-content: flex-start;
+    gap: 28px;
+    font-size: 1.4rem;
+    margin-bottom: 28px;
+  }
+
+  .nf-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 20px;
+    margin-bottom: 24px;
+  }
+
+  .nf-links ul {
+    margin: 0;
+  }
+
+  .nf-links li {
+    font-size: 0.78rem;
+    margin-bottom: 10px;
+  }
+
+  .nf-service {
+    display: block;
+    margin: 0 0 20px 0;
+    width: fit-content;
+  }
+
+  .nf-copy {
+    text-align: left;
+    font-size: 0.73rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .nf-footer-inner {
+    padding: 0 4%;
+  }
+
+  .nf-links {
+    gap: 8px 14px;
+  }
+
+  .nf-links li {
+    font-size: 0.72rem;
+  }
+}

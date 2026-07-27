@@ -1,0 +1,51 @@
+.play-button {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 24px;
+  background-color: #ffffff;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.play-button:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spacer {
+  width: 0.6rem;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .play-button {
+    height: 34px;
+    padding: 0 14px;
+  }
+  .play-button .label {
+    font-size: 0.8rem;
+  }
+  .play-button .icon-container svg {
+    width: 18px;
+    height: 18px;
+  }
+  .spacer {
+    width: 0.4rem;
+  }
+}

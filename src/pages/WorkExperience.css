@@ -1,0 +1,470 @@
+.vertical-timeline-element-content {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vertical-timeline-element-content:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.timeline-container {
+  text-align: left;
+  padding: 0px 60px;
+  margin-top: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Define the keyframes for the fade-in-up animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vertical-timeline-element-content {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #1f1f1f, #181818) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+}
+
+.vertical-timeline-element-content:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(229, 9, 20, 0.25) !important;
+}
+
+.vertical-timeline-element-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: linear-gradient(120deg,
+      rgba(229, 9, 20, 0.15),
+      transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.vertical-timeline-element-content:hover::before {
+  opacity: 1;
+}
+
+.vertical-date-text {
+  color: #e50914 !important;
+  font-weight: bold;
+  opacity: 1 !important;
+  padding: 0 !important;
+}
+
+/* Removed media query overrides to restore centered alternating layout */
+
+
+/* =====================================================
+   Horizontal Timeline — Original Single-Line Design
+   One red line in the center, cards floating above/below
+   ===================================================== */
+
+.horizontal-timeline-section {
+  position: relative;
+  padding: 0px 60px 40px 60px;
+}
+
+/* Outer scrollable row — overflow: hidden is required for JS scrollBy to work */
+.horizontal-timeline-row {
+  display: flex;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  padding: 0px 20px;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+.horizontal-timeline-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each item is a fixed-size column — the red line passes through the center */
+.horizontal-timeline-item {
+  position: relative;
+  min-width: 360px;
+  height: 580px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The single red line runs through every item at 50% */
+.horizontal-timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #e50914;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+/* First item: line starts from the center (no left half) */
+.horizontal-timeline-item:first-child::before {
+  left: 50%;
+  width: 50%;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+/* Last item: line ends at the center (no right half) */
+.horizontal-timeline-item:last-child::before {
+  width: 50%;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+/* Red node dot on the line */
+.timeline-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  background: #141414;
+  border: 4px solid #e50914;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.horizontal-timeline-item:hover .timeline-node {
+  transform: translate(-50%, -50%) scale(1.3);
+  background: #e50914;
+}
+
+/* Card — absolutely positioned, centered horizontally */
+.timeline-content {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  padding: 20px;
+  background: linear-gradient(180deg, #1f1f1f, #181818);
+  border-radius: 12px;
+  color: #fff;
+  z-index: 3;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.35s ease;
+}
+
+.timeline-content:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(229, 9, 20, 0.25);
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* Even items: card floats ABOVE the line */
+.item-top .timeline-content {
+  bottom: calc(50% + 20px);
+}
+
+/* Even items: pointer triangle pointing down toward the line */
+.item-top .timeline-content::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 12px 12px 0;
+  border-style: solid;
+  border-color: #1f1f1f transparent transparent transparent;
+}
+
+/* Odd items: card floats BELOW the line */
+.item-bottom .timeline-content {
+  top: calc(50% + 20px);
+}
+
+/* Odd items: pointer triangle pointing up toward the line */
+.item-bottom .timeline-content::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 12px 12px;
+  border-style: solid;
+  border-color: transparent transparent #1f1f1f transparent;
+}
+
+
+
+
+/* ---- Typography ---- */
+.horizontal-timeline-title {
+  white-space: normal;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.horizontal-timeline-date {
+  color: #e50914;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.horizontal-timeline-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #b3b3b3;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.horizontal-timeline-desc.expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  overflow: visible;
+}
+
+.expand-btn {
+  background: none;
+  border: none;
+  color: #e50914;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 10px;
+  transition: color 0.2s ease;
+}
+
+.expand-btn:hover {
+  color: #ff0a16;
+  text-decoration: underline;
+}
+
+/* =====================================================
+   Netflix-Style Modal
+   ===================================================== */
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dark backdrop */
+.timeline-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  backdrop-filter: blur(4px);
+}
+
+/* Modal box */
+.timeline-modal {
+  background: #181818;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 620px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 80px rgba(0, 0, 0, 0.9);
+  animation: modalSlideUp 0.3s ease;
+  position: relative;
+}
+
+.timeline-modal::-webkit-scrollbar {
+  width: 4px;
+}
+
+.timeline-modal::-webkit-scrollbar-thumb {
+  background: #e50914;
+  border-radius: 2px;
+}
+
+/* Header bar */
+.timeline-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 14px;
+  border-bottom: 2px solid #e50914;
+  position: sticky;
+  top: 0;
+  background: #181818;
+  z-index: 10;
+}
+
+.timeline-modal-badge {
+  background: #e50914;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.timeline-modal-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.timeline-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Modal body */
+.timeline-modal-body {
+  padding: 28px 28px 36px;
+}
+
+.timeline-modal-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.timeline-modal-date {
+  color: #e50914;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
+.timeline-modal-desc {
+  color: #d2d2d2;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .timeline-container {
+    padding: 0 16px;
+    margin-top: 1rem;
+  }
+
+  .horizontal-timeline-section {
+    padding: 0 16px 30px 16px;
+  }
+
+  .horizontal-timeline-row {
+    padding: 0 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 16px;
+  }
+
+  .horizontal-timeline-item {
+    min-width: 260px;
+    height: 520px;
+  }
+
+  .timeline-content {
+    width: 240px;
+    padding: 16px;
+  }
+
+  .horizontal-timeline-title {
+    font-size: 0.9rem;
+  }
+
+  .horizontal-timeline-date {
+    font-size: 0.78rem;
+  }
+
+  .horizontal-timeline-desc {
+    font-size: 0.78rem;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  /* Modal */
+  .timeline-modal-backdrop {
+    padding: 20px 12px;
+  }
+
+  .timeline-modal {
+    max-width: 100%;
+    max-height: 90vh;
+  }
+
+  .timeline-modal-body {
+    padding: 20px 16px 28px;
+  }
+
+  .timeline-modal-header {
+    padding: 16px 16px 12px;
+  }
+
+  .timeline-modal-title {
+    font-size: 1.2rem;
+  }
+
+  .timeline-modal-desc {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .horizontal-timeline-item {
+    min-width: 220px;
+    height: 480px;
+  }
+
+  .timeline-content {
+    width: 200px;
+    padding: 14px;
+  }
+
+  .horizontal-timeline-title {
+    font-size: 0.82rem;
+  }
+}

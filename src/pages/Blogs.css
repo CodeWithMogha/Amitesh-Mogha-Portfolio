@@ -1,0 +1,78 @@
+/* Blogs.css - Row Style matching Certifications */
+
+.blog-card-netflix-custom {
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+    overflow: hidden;
+    min-width: 260px;
+    max-width: 260px;
+    height: 235px;
+    background: #181818;
+    border-radius: 8px;
+}
+
+.blog-card-img-container {
+    width: 100%;
+    height: 120px; /* Reduced to leave more room for text */
+    background: #222;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 2px solid #e50914;
+}
+
+.blog-card-img-fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog-card-netflix-custom:hover .blog-card-img-fit {
+    transform: scale(1.1);
+}
+
+.blog-card-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #444;
+}
+
+/* Ensure consistent text truncation for blog cards */
+.blog-card-netflix-custom h3 {
+    padding: 15px 15px 5px 15px;
+    font-size: 1rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+.blog-card-netflix-custom .cert-issuer {
+    padding: 0 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.8rem !important;
+    line-height: 1.4;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.blog-card-netflix-custom .cert-year {
+    padding: 0 15px 15px 15px;
+    font-size: 0.75rem !important;
+    color: #666;
+    margin-top: auto;
+}
+
+/* Row hover behavior for arrows (inherited from main theme if possible, otherwise defined here) */
+.home-cert-section:hover .row-arrow {
+    opacity: 1;
+}

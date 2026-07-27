@@ -1,0 +1,305 @@
+/* ================================================
+   CONTACT SECTION
+   Netflix-dark aesthetic with red accent
+   ================================================ */
+
+.contact-section {
+    position: relative;
+    background: #0a0a0a;
+    padding: 90px 60px 80px;
+    overflow: hidden;
+}
+
+/* Subtle gradient glow top-right */
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(229, 9, 20, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Top red divider line */
+.contact-divider {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    right: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #e50914, transparent);
+}
+
+/* ── Layout ── */
+.contact-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── Left ── */
+.contact-left {
+    flex: 0 0 auto;
+    width: 320px;
+}
+
+.contact-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e50914;
+    margin-bottom: 18px;
+}
+
+.contact-heading {
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 900;
+    line-height: 1.0;
+    color: #ffffff;
+    margin: 0 0 24px;
+    letter-spacing: -2px;
+}
+
+.contact-sub {
+    font-size: 0.95rem;
+    color: #888;
+    line-height: 1.7;
+    max-width: 260px;
+}
+
+/* ── Right ── */
+.contact-right {
+    flex: 1;
+}
+
+/* ── Form ── */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-row {
+    display: flex;
+    gap: 20px;
+}
+
+.contact-row .contact-field {
+    flex: 1;
+}
+
+.contact-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-field label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999;
+}
+
+.contact-field input,
+.contact-field textarea {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    outline: none;
+    resize: none;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+    color: #555;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+    border-color: #e50914;
+    background: rgba(229, 9, 20, 0.05);
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.12);
+}
+
+/* ── Submit Button ── */
+.contact-btn {
+    align-self: flex-start;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    background: #e50914;
+    color: #fff;
+}
+
+.contact-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(229, 9, 20, 0.45);
+    background: #ff1a27;
+}
+
+.contact-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.contact-btn.sending {
+    background: #555;
+    cursor: not-allowed;
+}
+
+.contact-btn.sent {
+    background: #1db954;
+    cursor: default;
+}
+
+.contact-btn.error {
+    background: #c0392b;
+}
+
+.contact-btn:disabled {
+    opacity: 0.8;
+}
+
+/* ── Error message ── */
+.contact-error-msg {
+    font-size: 0.85rem;
+    color: #ff6b6b;
+    margin-top: -8px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* ── Success state ── */
+.contact-success {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 40px 0;
+    animation: fadeIn 0.4s ease;
+}
+
+.contact-success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #1db954;
+    color: #fff;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-success h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+}
+
+.contact-success p {
+    font-size: 0.95rem;
+    color: #888;
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .contact-inner {
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-left {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-sub {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .contact-heading {
+        font-size: 3.5rem;
+        text-align: center;
+    }
+
+    .contact-right {
+        width: 100%;
+    }
+
+    .contact-form {
+        align-items: stretch;
+    }
+
+    .contact-btn {
+        align-self: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-section {
+        padding: 50px 16px 50px;
+    }
+
+    .contact-divider {
+        left: 16px;
+        right: 16px;
+    }
+
+    .contact-row {
+        flex-direction: column;
+    }
+
+    .contact-heading {
+        font-size: clamp(2.8rem, 10vw, 4rem);
+        letter-spacing: -1px;
+    }
+
+    .contact-sub {
+        font-size: 0.85rem;
+    }
+
+    .contact-eyebrow {
+        font-size: 0.7rem;
+    }
+
+    .contact-field label {
+        font-size: 0.72rem;
+        text-align: left;
+    }
+
+    .contact-btn {
+        width: 100%;
+        text-align: center;
+        align-self: stretch;
+    }
+}

@@ -1,0 +1,435 @@
+/* GitHub Section - Professional Native Overhaul */
+
+.github-graph-wrapper {
+  color-scheme: dark !important;
+  forced-color-adjust: none !important;
+  isolation: isolate !important;
+  filter: none !important;
+}
+
+.github-section-container {
+  color-scheme: dark !important;
+  padding: 20px 4% 20px;
+  background-color: #141414;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.github-section-header {
+  width: 100%;
+  max-width: 1280px;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.github-profile-box {
+  width: 100%;
+  max-width: 1280px;
+  background-color: #0d0d0d;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Left Sidebar - Profile */
+.github-side-panel {
+  width: 260px;
+  min-width: 260px;
+  padding: 36px 28px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #0d0d0d;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.github-avatar-large {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(229, 9, 20, 0.6);
+  background-color: #161616;
+  box-shadow: 0 0 24px rgba(229, 9, 20, 0.2);
+  margin-bottom: 8px;
+}
+
+.github-avatar-large img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.github-info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.github-username {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 700;
+  margin: 0;
+}
+
+.github-identity {
+  font-size: 0.85rem;
+  color: #e50914;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.github-bio {
+  color: #888;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.github-view-profile {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e50914;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.github-view-profile:hover {
+  background-color: #ff1c29;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
+}
+
+/* Right Main Content */
+.github-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #0d0d0d;
+  padding: 32px 36px;
+}
+
+.github-graph-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.github-feature-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.block-heading {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.github-feature-inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.github-feature-inner:hover {
+  border-color: rgba(229, 9, 20, 0.4);
+}
+
+.github-stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.sub-inner {
+  min-height: 140px;
+}
+
+.github-feature-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ── Contribution Heatmap ── */
+.github-heatmap-block {
+  color-scheme: dark !important;
+  forced-color-adjust: none !important;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.github-heatmap-block:hover {
+  border-color: rgba(229, 9, 20, 0.4);
+}
+
+.heatmap-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heatmap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.heatmap-total {
+  color: #666;
+  font-size: 0.78rem;
+}
+
+.heatmap-count {
+  color: #e50914;
+  font-weight: 700;
+}
+
+.heatmap-live-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #39d353;
+  letter-spacing: 0.5px;
+  animation: livePulse 2s infinite;
+}
+
+@keyframes livePulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.heatmap-svg-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.heatmap-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.heatmap-link {
+  color: #555;
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.heatmap-link:hover {
+  color: #e50914;
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  color: #555;
+}
+
+.heatmap-legend-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.heatmap-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #555;
+  font-size: 0.82rem;
+  padding: 30px 0;
+}
+
+.heatmap-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(229, 9, 20, 0.2);
+  border-top-color: #e50914;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Tooltip */
+.heatmap-tooltip {
+  position: fixed;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  border: 1px solid rgba(229, 9, 20, 0.5);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  color: #e6e6e6;
+  pointer-events: none;
+  z-index: 9999;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+
+/* Mobile Overrides */
+@media (max-width: 1100px) {
+  .github-profile-box {
+    flex-direction: column;
+  }
+
+  .github-side-panel {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+    align-items: center;
+    padding: 28px;
+  }
+
+  .github-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .github-main-content {
+    padding: 24px 20px;
+  }
+
+  .github-avatar-large {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  .github-section-container {
+    padding: 16px 12px;
+  }
+
+  .github-profile-box {
+    border-width: 1px;
+    border-radius: 10px;
+  }
+
+  .github-side-panel {
+    padding: 20px 16px;
+    gap: 10px;
+  }
+
+  .github-avatar-large {
+    width: 100px;
+    height: 100px;
+  }
+
+  .github-username {
+    font-size: 1.2rem;
+  }
+
+  .github-identity {
+    font-size: 0.78rem;
+  }
+
+  .github-bio {
+    font-size: 0.78rem;
+    margin-bottom: 12px;
+  }
+
+  .github-view-profile {
+    padding: 8px 16px;
+    font-size: 0.72rem;
+  }
+
+  .github-main-content {
+    padding: 16px 12px;
+  }
+
+  .github-heatmap-block {
+    padding: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .heatmap-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .heatmap-total {
+    font-size: 0.7rem;
+  }
+
+  .block-heading {
+    font-size: 0.88rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 420px) {
+  .github-avatar-large {
+    width: 80px;
+    height: 80px;
+  }
+
+  .github-username {
+    font-size: 1rem;
+  }
+}

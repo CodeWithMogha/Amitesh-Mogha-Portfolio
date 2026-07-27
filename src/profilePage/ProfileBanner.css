@@ -1,0 +1,142 @@
+.profile-banner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+  box-sizing: border-box;
+
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Content must be ABOVE overlays */
+.banner-content {
+  position: relative;
+  z-index: 10;
+
+  max-width: 100%;
+  width: 100%;
+
+  padding: 0 0 8px 0;
+  box-sizing: border-box;
+}
+
+/* ── Title ── */
+.banner-headline {
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+/* ── Description ── */
+.banner-description {
+  font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 780px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* ── Buttons row ── */
+.banner-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* ── Generic button base ── */
+.banner-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 42px;
+  padding: 0 24px;
+  border-radius: 4px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+
+  transition: background-color 0.3s ease, opacity 0.2s ease;
+}
+
+.play-button {
+  background-color: #e50914;
+}
+
+.info-button {
+  background-color: rgba(109, 109, 110, 0.7);
+}
+
+.banner-button:hover {
+  opacity: 0.85;
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 768px) {
+  .profile-banner {
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  .banner-content {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .banner-headline {
+    font-size: clamp(1rem, 4.5vw, 1.6rem);
+    margin-bottom: 4px;
+  }
+
+  .banner-description {
+    font-size: 0.78rem;
+    max-width: 100%;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+
+  .banner-buttons {
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .banner-button {
+    height: 34px;
+    padding: 0 14px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .banner-headline {
+    font-size: clamp(0.9rem, 4vw, 1.3rem);
+  }
+
+  .banner-description {
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .banner-button {
+    height: 32px;
+    padding: 0 10px;
+    font-size: 0.75rem;
+    border-radius: 3px;
+  }
+}

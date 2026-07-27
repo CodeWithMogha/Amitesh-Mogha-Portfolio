@@ -1,0 +1,86 @@
+/* Learning.css */
+.learning-section {
+  margin-top: 5px;
+  padding: 30px 60px 30px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.learning-section-header {
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.learning-graph-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
+  background: rgba(18, 18, 18, 0.6);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.learning-svg {
+  display: block;
+  width: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Mobile: reduce circle graph container ── */
+@media (max-width: 768px) {
+  .learning-section {
+    padding: 20px 16px 20px;
+  }
+
+  .learning-section-header {
+    margin-bottom: 12px;
+  }
+
+  .learning-section-header .row-title {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+
+  .learning-section-header p {
+    font-size: 0.8rem;
+    padding-left: 0 !important;
+  }
+
+  .learning-graph-container {
+    border-width: 1px;
+    border-radius: 10px;
+    min-height: 220px;
+    max-height: 280px;
+  }
+
+  .learning-svg {
+    max-height: 280px;
+  }
+}
+
+@media (max-width: 420px) {
+  .learning-section {
+    padding: 16px 10px 16px;
+  }
+
+  .learning-graph-container {
+    min-height: 180px;
+    max-height: 240px;
+  }
+
+  .learning-svg {
+    max-height: 240px;
+  }
+}
