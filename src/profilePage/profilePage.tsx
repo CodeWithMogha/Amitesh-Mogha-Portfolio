@@ -23,7 +23,7 @@ const ProfilePage: React.FC = () => {
   const { profileName } = useParams();
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
 
   // Safe profile detection
   const profile: ProfileType =
@@ -45,19 +45,24 @@ const ProfilePage: React.FC = () => {
     setIsMuted(nextMuted);
   }, []);
 
+  // Sync mute state to the video element whenever it changes
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
+
   // Pause video when scrolled out of view, resume when visible
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Apply current mute status to video element
-    video.muted = isMuted;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           video.play().catch((err) => {
-            console.warn("Unmuted autoplay restricted by browser, playing muted:", err);
+            // Browser blocked unmuted autoplay — fall back to muted
+            console.warn("Unmuted autoplay blocked by browser, falling back to muted:", err);
             video.muted = true;
             setIsMuted(true);
             video.play().catch(() => {});
@@ -71,7 +76,7 @@ const ProfilePage: React.FC = () => {
 
     observer.observe(video);
     return () => observer.disconnect();
-  }, [backgroundVideo, isMuted]);
+  }, [backgroundVideo]);
 
   return (
     <>
