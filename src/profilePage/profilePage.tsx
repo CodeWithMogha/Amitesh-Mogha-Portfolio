@@ -23,9 +23,35 @@ const ProfilePage: React.FC = () => {
   const { profileName } = useParams();
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // isMuted drives the button icon.
+  // Default: false (user preference = audio ON).
   const [isMuted, setIsMuted] = useState(false);
 
-  // Safe profile detection
+  // A ref that always mirrors isMuted without creating stale closures.
+  // Effects and callbacks read this ref instead of the isMuted state value
+  // to avoid the "2-click" bug caused by reading a captured stale value.
+  const isMutedRef = useRef(false);
+
+  // Keep the ref in sync on every render.
+  isMutedRef.current = isMuted;
+
+  // ── Helpers ──────────────────────────────────────────────────────────────
+
+  // Apply a mute value to both the DOM element and React state atomically.
+  // This is the ONLY function that should ever call setIsMuted.
+  const applyMute = useCallback((muted: boolean) => {
+    if (videoRef.current) videoRef.current.muted = muted;
+    isMutedRef.current = muted;
+    setIsMuted(muted);
+  }, []);
+
+  // Button click handler — toggles from whatever state we're currently in.
+  const toggleMute = useCallback(() => {
+    applyMute(!isMutedRef.current);
+  }, [applyMute]);
+
+  // ── Profile / video resolution ────────────────────────────────────────────
   const profile: ProfileType =
     profileName === 'developer'
       ? 'developer'
@@ -35,35 +61,29 @@ const ProfilePage: React.FC = () => {
           ? 'adventurer'
           : 'recruiter';
 
-  // Use router state if available, otherwise fall back to local video map
   const backgroundVideo = location.state?.backgroundVideo || VIDEO_MAP[profile];
 
-  const toggleMute = useCallback(() => {
-    if (!videoRef.current) return;
-    const nextMuted = !videoRef.current.muted;
-    videoRef.current.muted = nextMuted;
-    setIsMuted(nextMuted);
-  }, []);
-
-  // Sync mute state to the video element whenever it changes
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted;
-    }
-  }, [isMuted]);
-
-  // Pause video when scrolled out of view, resume when visible
+  // ── IntersectionObserver: play / pause as video enters / leaves view ──────
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
+    // Sync DOM with current user preference whenever the video element
+    // is (re-)created (the key prop changes when backgroundVideo changes).
+    video.muted = isMutedRef.current;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch((err) => {
-            // Browser blocked unmuted autoplay — fall back to muted
-            console.warn("Unmuted autoplay blocked by browser, falling back to muted:", err);
+          // Try playing with the user's current preference.
+          video.play().catch(() => {
+            // Browser blocked unmuted autoplay (typical on hard refresh before
+            // any user gesture — this is an enforced browser-level policy).
+            // ► Mute the DOM element so the browser allows playback.
+            // ► Also update React state so the button accurately shows MUTED,
+            //   meaning the user needs only ONE click to restore audio.
             video.muted = true;
+            isMutedRef.current = true;
             setIsMuted(true);
             video.play().catch(() => {});
           });
@@ -76,8 +96,10 @@ const ProfilePage: React.FC = () => {
 
     observer.observe(video);
     return () => observer.disconnect();
-  }, [backgroundVideo]);
+    // backgroundVideo is the only dep we want — isMutedRef is a ref (stable).
+  }, [backgroundVideo]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Render ────────────────────────────────────────────────────────────────
   return (
     <>
       <Navbar />
@@ -99,7 +121,12 @@ const ProfilePage: React.FC = () => {
         <div className="hero-overlay" />
 
         <div className="netflix-controls">
-          <button onClick={toggleMute} className="netflix-mute-btn" style={{ zIndex: 200, pointerEvents: 'auto' }}>
+          <button
+            onClick={toggleMute}
+            className="netflix-mute-btn"
+            style={{ zIndex: 200, pointerEvents: 'auto' }}
+            aria-label={isMuted ? 'Unmute' : 'Mute'}
+          >
             {isMuted ? <VscMute size={20} color="white" /> : <VscUnmute size={20} color="white" />}
           </button>
           <div className="netflix-rating-badge">U/A 13+</div>
@@ -114,7 +141,6 @@ const ProfilePage: React.FC = () => {
       <div className="profile-rows-container">
         <TopPicksRow profile={profile} />
       </div>
-
     </>
   );
 };

@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import './ContactSection.css';
 
 // ─────────────────────────────────────────────────────────
-// Replace this with your Formspree endpoint.
-// Sign up free at https://formspree.io, create a form, copy the URL.
-// Example: 'https://formspree.io/f/xabcdefg'
+// Formspree endpoint — this is a public client-side URL
+// (intentionally hardcoded so it works on GitHub Pages).
 // ─────────────────────────────────────────────────────────
-const FORMSPREE_ENDPOINT = process.env.REACT_APP_FORMSPREE_ENDPOINT || '';
+const FORMSPREE_ENDPOINT =
+  process.env.REACT_APP_FORMSPREE_ENDPOINT || 'https://formspree.io/f/xyklldpz';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
@@ -39,13 +39,6 @@ const ContactSection: React.FC = () => {
     const validationError = validate();
     if (validationError) {
       setErrorMsg(validationError);
-      setStatus('error');
-      return;
-    }
-
-    if (!FORMSPREE_ENDPOINT) {
-      console.error('Formspree endpoint is missing. Set REACT_APP_FORMSPREE_ENDPOINT in .env');
-      setErrorMsg('Contact form is not configured yet. Please try again later.');
       setStatus('error');
       return;
     }
